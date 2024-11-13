@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/bootstrap.dart';
 import 'package:my_app/src/exceptions/async_error_logger.dart';
-import 'package:my_app/src/features/statistics/data/local/sembast_relapse_repository.dart';
 
 /// Extension methods specific for the Firebase project configuration
 extension AppBootstrapFirebase on AppBootstrap {
@@ -27,12 +26,12 @@ extension AppBootstrapFirebase on AppBootstrap {
   /// - create and configure the repositories as desired
   /// - override the default implementations with a list of "overrides"
   Future<ProviderContainer> createFirebaseProviderContainer({bool addDelay = true}) async {
-    final localRelapseRepository = await SembastRelapseRepository.makeDefault();
+    // final localRelapseRepository = await SembastRelapseRepository.makeDefault();
     return ProviderContainer(
-      overrides: [
-        // repositories
-        localRelapseRepositoryProvider.overrideWithValue(localRelapseRepository),
-      ],
+      // overrides: [
+      //   // repositories
+      //   localRelapseRepositoryProvider.overrideWithValue(localRelapseRepository),
+      // ],
       observers: [AsyncErrorLogger()],
     );
   }
