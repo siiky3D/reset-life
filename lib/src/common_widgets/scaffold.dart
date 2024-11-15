@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/src/common_widgets/app_bar.dart';
 
 class AppScaffold extends Scaffold {
   AppScaffold({
     super.key,
-    super.appBar,
     super.floatingActionButton,
     super.floatingActionButtonLocation,
     super.floatingActionButtonAnimator,
@@ -28,6 +28,7 @@ class AppScaffold extends Scaffold {
     super.persistentFooterAlignment,
     Widget? body,
   }) : super(
+          appBar: AppAppBar(),
           body: Stack(
             fit: StackFit.expand,
             children: [

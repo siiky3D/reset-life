@@ -9,6 +9,7 @@
     "description": "ป้ายกำกับสำหรับตัวจับเวลาสถิติ"
   },
   "recordRelapse": "บันทึกการถอยหลัง",
+  "addRelapse": "เพิ่มการถอยหลัง",
   "@recordRelapse": {
     "description": "ปุ่มสำหรับบันทึกการถอยหลัง"
   },
@@ -51,5 +52,9 @@
   "profile": "โปรไฟล์",
   "@profile": {
     "description": "โปรไฟล์"
+  },
+  "calendar": "ปฏิธิน",
+  "@calendar": {
+    "description": "ปฏิธิน"
   }
 }

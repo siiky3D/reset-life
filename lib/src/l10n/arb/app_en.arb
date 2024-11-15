@@ -9,6 +9,7 @@
     "description": "Label for the current streak timer"
   },
   "recordRelapse": "Record Relapse",
+  "addRelapse": "Add a relapse",
   "@recordRelapse": {
     "description": "Button label for recording a relapse"
   },
@@ -51,5 +52,9 @@
   "profile": "Profile",
   "@profile": {
     "description": "Profile"
+  },
+  "calendar": "Calendar",
+  "@calendar": {
+    "description": "Calendar"
   }
 }

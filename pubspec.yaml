@@ -33,6 +33,7 @@ dependencies:
   rxdart: ^0.28.0
   sembast: ^3.7.5+2
   sembast_web: ^2.4.0+4
+  table_calendar: ^3.1.2
 
 dev_dependencies:
   build_runner: ^2.4.13
