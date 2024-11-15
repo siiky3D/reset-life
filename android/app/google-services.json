@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "369011696004",
+    "project_id": "resetlife-dev",
+    "storage_bucket": "resetlife-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369011696004:android:d8aaba22184cb0e0d67dd1",
+        "android_client_info": {
+          "package_name": "com.custom.org.my_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDofw-e0FVh0BApgVroBgP-LjT7ghRPiME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+
+import 'package:my_app/firebase_options.dart';
 import 'package:my_app/src/app.dart';
 import 'package:my_app/src/app_bootstrap_firebase.dart';
 import 'package:my_app/src/exceptions/error_logger.dart';
@@ -55,6 +59,11 @@ class AppBootstrap {
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // Add cross-flavor configuration here
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  usePathUrlStrategy();
   // create an app bootstrap instance
   final appBootstrap = AppBootstrap();
   // * uncomment this to connect to the Firebase emulators
