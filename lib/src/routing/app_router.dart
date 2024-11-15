@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_app/src/features/activity/presentation/activity_screen.dart';
 import 'package:my_app/src/features/authentication/data/auth_repository.dart';
-import 'package:my_app/src/features/home/presentation/home.dart';
+import 'package:my_app/src/features/home/presentation/home_screen.dart';
+import 'package:my_app/src/features/profile/presentation/profile_screen.dart';
+import 'package:my_app/src/features/statistics/presentation/statistics_screen.dart';
 import 'package:my_app/src/routing/go_router_refresh_stream.dart';
 import 'package:my_app/src/routing/not_found_screen.dart';
 import 'package:my_app/src/routing/scaffold_with_nested_navigation.dart';
@@ -10,6 +13,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 // private navigators
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'home');
+final _statisticsNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'statistics');
+final _activityNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'activity');
+final _profileNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'profile');
 
 /// All the supported routes in the app.
 /// By using an enum, we route by name using this syntax:
@@ -78,6 +84,39 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 path: '/',
                 name: AppRoute.home.name,
                 builder: (context, state) => const HomeScreen(),
+                routes: [],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _statisticsNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/statistics',
+                name: AppRoute.statistics.name,
+                builder: (context, state) => const StatisticsScreen(),
+                routes: [],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _activityNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/activity',
+                name: AppRoute.activity.name,
+                builder: (context, state) => const ActivityScreen(),
+                routes: [],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: _profileNavigatorKey,
+            routes: [
+              GoRoute(
+                path: '/profile',
+                name: AppRoute.profile.name,
+                builder: (context, state) => const ProfileScreen(),
                 routes: [],
               ),
             ],

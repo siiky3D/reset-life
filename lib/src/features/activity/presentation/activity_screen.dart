@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class StatisticsScreen extends ConsumerWidget {
-  const StatisticsScreen({super.key});
+class ActivityScreen extends ConsumerWidget {
+  const ActivityScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
