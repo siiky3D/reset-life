@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:my_app/src/common_widgets/app_bar.dart';
 import 'package:my_app/src/common_widgets/main_tab_view.dart';
 import 'package:my_app/src/common_widgets/primary_button.dart';
 import 'package:my_app/src/common_widgets/scaffold.dart';
 import 'package:my_app/src/constants/app_sizes.dart';
 import 'package:my_app/src/l10n/l10n.dart';
+import 'package:my_app/src/routing/app_router.dart';
 import 'package:my_app/src/themes/colors.dart';
 import 'package:my_app/src/themes/extensions.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -59,38 +62,43 @@ class StatisticsScreen extends ConsumerWidget {
                   PrimaryButton(
                     text: localizations.addRelapse,
                     color: context.colors.primary,
+                    onPressed: () => context.goNamed(AppRoute.addRelapse.name),
                   ),
                   gapH16,
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.darkBrown,
-                      borderRadius: BorderRadius.circular(Sizes.p16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(Sizes.p16),
-                      child: Column(
-                        children: [
-                          Row(
+                  Consumer(
+                    builder: (context, ref, child) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.darkBrown,
+                          borderRadius: BorderRadius.circular(Sizes.p16),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(Sizes.p16),
+                          child: Column(
                             children: [
-                              Text('data'),
-                              Text('data'),
+                              Row(
+                                children: [
+                                  Text('data'),
+                                  Text('data'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('data'),
+                                  Text('data'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('data'),
+                                  Text('data'),
+                                ],
+                              ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              Text('data'),
-                              Text('data'),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text('data'),
-                              Text('data'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

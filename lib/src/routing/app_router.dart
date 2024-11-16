@@ -4,6 +4,7 @@ import 'package:my_app/src/features/activity/presentation/activity_screen.dart';
 import 'package:my_app/src/features/authentication/data/auth_repository.dart';
 import 'package:my_app/src/features/home/presentation/home_screen.dart';
 import 'package:my_app/src/features/profile/presentation/profile_screen.dart';
+import 'package:my_app/src/features/record_relapse/presentation/edit_relapse_screen.dart';
 import 'package:my_app/src/features/statistics/presentation/statistics_screen.dart';
 import 'package:my_app/src/routing/go_router_refresh_stream.dart';
 import 'package:my_app/src/routing/not_found_screen.dart';
@@ -29,12 +30,14 @@ enum AppRoute {
   profile,
   signin,
   signup,
+  addRelapse,
 }
 
 /// returns the GoRouter instance that defines all the routes in the app
 final goRouterProvider = Provider<GoRouter>((ref) {
   final authRepository = ref.watch(authRepositoryProvider);
   return GoRouter(
+    navigatorKey: _rootNavigatorKey,
     initialLocation: '/',
     debugLogDiagnostics: true,
     // * redirect logic based on the authentication state
@@ -83,7 +86,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/',
                 name: AppRoute.home.name,
-                builder: (context, state) => const HomeScreen(),
+                pageBuilder: (context, state) => NoTransitionPage(child: const HomeScreen()),
                 routes: [],
               ),
             ],
@@ -94,8 +97,22 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/statistics',
                 name: AppRoute.statistics.name,
-                builder: (context, state) => const StatisticsScreen(),
-                routes: [],
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const StatisticsScreen(),
+                ),
+                routes: [
+                  GoRoute(
+                    path: 'add',
+                    name: AppRoute.addRelapse.name,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    pageBuilder: (context, state) {
+                      return const MaterialPage(
+                        fullscreenDialog: true,
+                        child: EditRelapseScreen(),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -105,7 +122,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/activity',
                 name: AppRoute.activity.name,
-                builder: (context, state) => const ActivityScreen(),
+                pageBuilder: (context, state) => NoTransitionPage(child: const ActivityScreen()),
                 routes: [],
               ),
             ],
@@ -116,7 +133,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/profile',
                 name: AppRoute.profile.name,
-                builder: (context, state) => const ProfileScreen(),
+                pageBuilder: (context, state) => NoTransitionPage(child: const ProfileScreen()),
                 routes: [],
               ),
             ],
