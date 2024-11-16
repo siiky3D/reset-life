@@ -1,0 +1,60 @@
+{
+  "@@locale": "en",
+  "counterAppBarTitle": "Counter",
+  "@counterAppBarTitle": {
+    "description": "Text shown in the AppBar of the Counter Page"
+  },
+  "currentStreak": "Current Streak",
+  "@currentStreak": {
+    "description": "Label for the current streak timer"
+  },
+  "recordRelapse": "Record Relapse",
+  "addRelapse": "Add a relapse",
+  "@recordRelapse": {
+    "description": "Button label for recording a relapse"
+  },
+  "writeJourney": "Write Journey",
+  "@writeJourney": {
+    "description": "Button label for writing a journal entry"
+  },
+  "panicButton": "Panic Button",
+  "@panicButton": {
+    "description": "Button label for panic feature"
+  },
+  "days": "days",
+  "@days": {
+    "description": "Label for days in the timer"
+  },
+  "hours": "hours",
+  "@hours": {
+    "description": "Label for hours in the timer"
+  },
+  "min": "min",
+  "@min": {
+    "description": "Label for minutes in the timer"
+  },
+  "sec": "sec",
+  "@sec": {
+    "description": "Label for seconds in the timer"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home screen"
+  },
+  "statistics": "Statistics",
+  "@statistics": {
+    "description": "Statistics for user who record the data"
+  },
+  "activity": "Activity",
+  "@activity": {
+    "description": "Activity"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile"
+  },
+  "calendar": "Calendar",
+  "@calendar": {
+    "description": "Calendar"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "@@locale": "th",
+  "counterAppBarTitle": "ตัวนับ",
+  "@counterAppBarTitle": {
+    "description": "ข้อความที่แสดงใน AppBar ของหน้า Counter"
+  },
+  "currentStreak": "สถิติปัจจุบัน",
+  "@currentStreak": {
+    "description": "ป้ายกำกับสำหรับตัวจับเวลาสถิติ"
+  },
+  "recordRelapse": "บันทึกการถอยหลัง",
+  "addRelapse": "เพิ่มการถอยหลัง",
+  "@recordRelapse": {
+    "description": "ปุ่มสำหรับบันทึกการถอยหลัง"
+  },
+  "writeJourney": "เขียนบันทึก",
+  "@writeJourney": {
+    "description": "ปุ่มสำหรับเขียนบันทึกการเดินทาง"
+  },
+  "panicButton": "ปุ่มตื่นตระหนก",
+  "@panicButton": {
+    "description": "ปุ่มสำหรับฟีเจอร์ตื่นตระหนก"
+  },
+  "days": "วัน",
+  "@days": {
+    "description": "ป้ายกำกับสำหรับวันในตัวจับเวลา"
+  },
+  "hours": "ชั่วโมง",
+  "@hours": {
+    "description": "ป้ายกำกับสำหรับชั่วโมงในตัวจับเวลา"
+  },
+  "min": "นาที",
+  "@min": {
+    "description": "ป้ายกำกับสำหรับนาทีในตัวจับเวลา"
+  },
+  "sec": "วินาที",
+  "@sec": {
+    "description": "ป้ายกำกับสำหรับวินาทีในตัวจับเวลา"
+  },
+  "home": "หน้าแรก",
+  "@home": {
+    "description": "หน้าแรก"
+  },
+  "statistics": "สถิติ",
+  "@statistics": {
+    "description": "สถิติ"
+  },
+  "activity": "กิจกรรม",
+  "@activity": {
+    "description": "กิจกรรม"
+  },
+  "profile": "โปรไฟล์",
+  "@profile": {
+    "description": "โปรไฟล์"
+  },
+  "calendar": "ปฏิธิน",
+  "@calendar": {
+    "description": "ปฏิธิน"
+  }
+}
