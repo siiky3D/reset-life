@@ -86,7 +86,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/',
                 name: AppRoute.home.name,
-                pageBuilder: (context, state) => NoTransitionPage(child: const HomeScreen()),
+                pageBuilder: (context, state) => NoTransitionPage(
+                  child: const HomeScreen(),
+                ),
                 routes: [],
               ),
             ],

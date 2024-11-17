@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reset_life/src/l10n/l10n.dart';
 import 'package:reset_life/src/l10n/string_hardcoded.dart';
 import 'package:reset_life/src/routing/app_router.dart';
 
@@ -15,27 +17,18 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       restorationScopeId: 'myapp',
       onGenerateTitle: (BuildContext context) => 'Reset Life'.hardcoded,
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.grey,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black87,
-          foregroundColor: Colors.white,
-          elevation: 0,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.black, // background (button) color
-            foregroundColor: Colors.white, // foreground (text) color
-          ),
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.black, // background (button) color
-          foregroundColor: Colors.white, // foreground (text) color
-        ),
-      ),
-      // localizationsDelegates: AppLocalizations.localizationsDelegates,
-      // supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      scrollBehavior: AppScrollBehavior(),
     );
   }
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
 }

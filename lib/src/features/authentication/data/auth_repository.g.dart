@@ -6,7 +6,7 @@ part of 'auth_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authRepositoryHash() => r'd1493a168564057722e42fc09c828a350df807e9';
+String _$authRepositoryHash() => r'fa5b8337b7daf1a6e6ab14268c91ea9089629ec0';
 
 /// See also [authRepository].
 @ProviderFor(authRepository)
@@ -23,7 +23,7 @@ final authRepositoryProvider = Provider<AuthRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthRepositoryRef = ProviderRef<AuthRepository>;
-String _$authStateChangesHash() => r'70d96078e41cd44270b2118f16bcbed842f33064';
+String _$authStateChangesHash() => r'199a9132d64e85888f728def3717a5163d8558aa';
 
 /// See also [authStateChanges].
 @ProviderFor(authStateChanges)
@@ -40,7 +40,7 @@ final authStateChangesProvider = StreamProvider<AppUser?>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthStateChangesRef = StreamProviderRef<AppUser?>;
-String _$idTokenChangesHash() => r'e6058ad0b90d6e10b628af4b3dbd180a67b7146e';
+String _$idTokenChangesHash() => r'dcd9db4e15cd156817a4895049e10fa214e6f818';
 
 /// See also [idTokenChanges].
 @ProviderFor(idTokenChanges)
@@ -58,7 +58,7 @@ final idTokenChangesProvider = StreamProvider<AppUser?>.internal(
 // ignore: unused_element
 typedef IdTokenChangesRef = StreamProviderRef<AppUser?>;
 String _$isCurrentUserAdminHash() =>
-    r'69fab3db094dff0016a615b1e8b1047beabb06c5';
+    r'b542c95009454e9386db32c4916bd6b9e2ba4a24';
 
 /// See also [isCurrentUserAdmin].
 @ProviderFor(isCurrentUserAdmin)

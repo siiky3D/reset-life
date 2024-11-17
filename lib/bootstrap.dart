@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:reset_life/firebase_options.dart';
 import 'package:reset_life/src/app.dart';
 import 'package:reset_life/src/app_bootstrap_firebase.dart';
 
@@ -60,7 +61,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // Add cross-flavor configuration here
   WidgetsFlutterBinding.ensureInitialized();
 
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   usePathUrlStrategy();
   // create an app bootstrap instance

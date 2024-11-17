@@ -36,6 +36,7 @@ dependencies:
   sembast_web: ^2.4.0+4
   syncfusion_flutter_charts: ^27.2.2
   table_calendar: ^3.1.2
+  shared_preferences: ^2.3.3
 
 dev_dependencies:
   build_runner: ^2.4.13

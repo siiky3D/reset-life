@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "189361738963",
+    "project_id": "reset-life-prod",
+    "storage_bucket": "reset-life-prod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189361738963:android:5293aefaa0dd445b757026",
+        "android_client_info": {
+          "package_name": "com.example.reset_life"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtia7UvJ-Y1tK7Bg4SRDpxDx67W_8G1J4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
