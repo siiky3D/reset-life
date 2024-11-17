@@ -3,9 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:reset_life/src/features/activity/presentation/activity_screen.dart';
 import 'package:reset_life/src/features/authentication/data/auth_repository.dart';
 import 'package:reset_life/src/features/home/presentation/home_screen.dart';
+import 'package:reset_life/src/features/onboarding/data/onboarding_repository.dart';
+import 'package:reset_life/src/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:reset_life/src/features/profile/presentation/profile_screen.dart';
 import 'package:reset_life/src/features/record_relapse/presentation/edit_relapse_screen.dart';
 import 'package:reset_life/src/features/statistics/presentation/statistics_screen.dart';
+import 'package:reset_life/src/routing/app_startup.dart';
 import 'package:reset_life/src/routing/go_router_refresh_stream.dart';
 import 'package:reset_life/src/routing/not_found_screen.dart';
 import 'package:reset_life/src/routing/scaffold_with_nested_navigation.dart';
@@ -24,6 +27,7 @@ final _profileNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'profile');
 /// context.goNamed(AppRoute.orders.name)
 /// ```
 enum AppRoute {
+  onboarding,
   home,
   statistics,
   activity,
@@ -33,48 +37,64 @@ enum AppRoute {
   addRelapse,
 }
 
-/// returns the GoRouter instance that defines all the routes in the app
 final goRouterProvider = Provider<GoRouter>((ref) {
+  final appStartupState = ref.watch(appStartupProvider);
   final authRepository = ref.watch(authRepositoryProvider);
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/',
+    initialLocation: '/signIn',
     debugLogDiagnostics: true,
-    // * redirect logic based on the authentication state
-    redirect: (context, state) async {
-      final user = authRepository.currentUser;
-      final isLoggedIn = user != null;
+    redirect: (context, state) {
+      if (appStartupState.isLoading || appStartupState.hasError) {
+        return '/startup';
+      }
+      final onboardingRepository = ref.read(onboardingRepositoryProvider).requireValue;
+      final didCompleteOnboarding = onboardingRepository.isOnboardingComplete();
       final path = state.uri.path;
-      if (isLoggedIn) {
-        if (path == '/signIn') {
-          return '/';
+      if (!didCompleteOnboarding) {
+        if (path != '/onboarding') {
+          return '/onboarding';
         }
-        final isAdmin = await user.isAdmin();
-        // prevent non-admin users to navigate to any of the admin pages
-        if (!isAdmin && path.startsWith('/admin')) {
-          return '/';
+        return null;
+      }
+      final isLoggedIn = authRepository.currentUser != null;
+      if (isLoggedIn) {
+        if (path.startsWith('/startup') ||
+            path.startsWith('/onboarding') ||
+            path.startsWith('/signIn')) {
+          return '/home';
         }
       } else {
-        if (path == '/account' || path == '/orders') {
-          return '/';
-        }
-        // prevent non signed-in users to navigate to any of the admin pages
-        if (path.startsWith('/admin')) {
-          return '/';
+        if (path.startsWith('/startup') ||
+            path.startsWith('/onboarding') ||
+            path.startsWith('/home') ||
+            path.startsWith('/statistics') ||
+            path.startsWith('/activity') ||
+            path.startsWith('/profile')) {
+          return '/signIn';
         }
       }
       return null;
     },
     refreshListenable: GoRouterRefreshStream(authRepository.authStateChanges()),
     routes: [
-      // GoRoute(
-      //   path: '/',
-      //   name: AppRoute.home.name,
-      //   builder: (context, state) => const HomeScreen(),
-      //   routes: [],
-      // ),
-      // Stateful navigation based on:
-      // https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
+      GoRoute(
+        path: '/startup',
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: AppStartupWidget(
+            // * This is just a placeholder
+            // * The loaded route will be managed by GoRouter on state change
+            onLoaded: (_) => const SizedBox.shrink(),
+          ),
+        ),
+      ),
+      GoRoute(
+        path: '/onboarding',
+        name: AppRoute.onboarding.name,
+        pageBuilder: (context, state) => const NoTransitionPage(
+          child: OnboardingScreen(),
+        ),
+      ),
       StatefulShellRoute.indexedStack(
         pageBuilder: (context, state, navigationShell) => NoTransitionPage(
           child: ScaffoldWithNestedNavigation(navigationShell: navigationShell),
