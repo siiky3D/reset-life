@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reset_life/src/l10n/l10n.dart';
+import 'package:reset_life/src/routing/animated_bottom_bar.dart';
 
 // Stateful navigation based on:
 // https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
@@ -59,6 +60,10 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
 
     return Scaffold(
       body: body,
+      // bottomNavigationBar: AnimatedBottomAppBar(
+      //   currentActiveIndex: currentIndex,
+      //   onTabSelected: onDestinationSelected,
+      // ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
         destinations: [
