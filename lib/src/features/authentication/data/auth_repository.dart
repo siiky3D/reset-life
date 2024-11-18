@@ -8,26 +8,66 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_repository.g.dart';
 
+enum AuthenticationState {
+  initial,
+  loading,
+  success,
+  error,
+}
+
 class AuthRepository {
   AuthRepository(this._auth);
   final FirebaseAuth _auth;
 
-  Future<void> signInWithEmailAndPassword(String email, String password) {
-    return _auth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+  AuthenticationState _state = AuthenticationState.initial;
+  String? _errorMessage;
+
+  AuthenticationState get state => _state;
+  String? get errorMessage => _errorMessage;
+
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    _state = AuthenticationState.loading;
+
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      _state = AuthenticationState.success;
+    } on FirebaseAuthException catch (e) {
+      _state = AuthenticationState.error;
+      _errorMessage = e.message;
+    }
   }
 
-  Future<void> createUserWithEmailAndPassword(String email, String password) {
-    return _auth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+  Future<void> createUserWithEmailAndPassword(String email, String password) async {
+    _state = AuthenticationState.loading;
+    try {
+      await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      _state = AuthenticationState.success;
+    } on FirebaseAuthException catch (e) {
+      _state = AuthenticationState.error;
+      _errorMessage = e.message;
+    }
   }
 
-  Future<void> signOut() {
-    return _auth.signOut();
+  Future<void> signInAnonymously() async {
+    _state = AuthenticationState.loading;
+    try {
+      _auth.signInAnonymously();
+      _state = AuthenticationState.success;
+    } catch (e) {
+      _state = AuthenticationState.error;
+      _errorMessage = e.toString();
+    }
+  }
+
+  Future<void> signOut() async {
+    _state = AuthenticationState.loading;
+    try {
+      await _auth.signOut();
+      _state = AuthenticationState.success;
+    } catch (e) {
+      _state = AuthenticationState.error;
+      _errorMessage = e.toString();
+    }
   }
 
   /// Notifies about changes to the user's sign-in state (such as sign-in or

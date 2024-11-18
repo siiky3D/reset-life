@@ -29,8 +29,25 @@ class $AssetsRivesGen {
   List<String> get values => [composer, fire, land, mediation, profile];
 }
 
+class $AssetsSvgsGen {
+  const $AssetsSvgsGen();
+
+  /// File path: assets/svgs/christmas.svg
+  String get christmas => 'assets/svgs/christmas.svg';
+
+  /// File path: assets/svgs/doctors.svg
+  String get doctors => 'assets/svgs/doctors.svg';
+
+  /// File path: assets/svgs/traveling.svg
+  String get traveling => 'assets/svgs/traveling.svg';
+
+  /// List of all assets
+  List<String> get values => [christmas, doctors, traveling];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsRivesGen rives = $AssetsRivesGen();
+  static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
 }
